@@ -1,0 +1,15 @@
+// Sample data for users
+[
+    {
+      "username": "john_doe",
+      "email": "john@example.com",
+      "password": "hashed_password_here"
+    },
+    {
+      "username": "jane_smith",
+      "email": "jane@example.com",
+      "password": "hashed_password_here"
+    },
+    // Add more users as needed
+  ]
+  

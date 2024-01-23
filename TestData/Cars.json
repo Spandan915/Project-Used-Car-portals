@@ -1,0 +1,30 @@
+// Sample data for cars
+[
+  {
+    "make": "Toyota",
+    "model": "Camry",
+    "year": 2018,
+    "price": 20000,
+    "mileage": 30000,
+    "features": ["Power Windows", "Bluetooth", "Backup Camera"],
+    "seller": {
+      "name": "John Doe",
+      "email": "john@example.com",
+      "phone": "555-1234"
+    }
+  },
+  {
+    "make": "Honda",
+    "model": "Civic",
+    "year": 2017,
+    "price": 18000,
+    "mileage": 28000,
+    "features": ["Sunroof", "Navigation", "Lane Departure Warning"],
+    "seller": {
+      "name": "Jane Smith",
+      "email": "jane@example.com",
+      "phone": "555-5678"
+    }
+  },
+  // Add more cars as needed
+]
