@@ -1,14 +1,36 @@
+// backend/routes.js
+
 const express = require('express');
-const { Car, User } = require('./models');
+const { Car } = require('./models');
 
 const router = express.Router();
 
-// Define routes for user stories
-router.get('/api/cars', (req, res) => {
-  // Implement logic to fetch and return a list of cars
-  res.json({ message: 'Get all cars route' });
-});
+// Route to filter cars based on parameters
+router.post('/api/cars/filter', async (req, res) => {
+    // Retrieve filter parameters from the request body
+    const filters = req.body;
 
-// Add more routes as needed
+    // Construct a MongoDB query based on the filters
+    const query = {};
 
-module.exports = router;
+    if (filters.make) {
+        query.make = filters.make;
+    }
+
+    if (filters.location) {
+        query.location = filters.location;
+    }
+
+    if (filters.postcode) {
+        query.postcode = filters.postcode;
+    }
+
+    if (filters.priceLow && filters.priceHigh) {
+        query.price = { $gte: filters.priceLow, $lte: filters.priceHigh };
+    }
+
+    if (filters.yearFrom && filters.yearTo) {
+        query.year = { $gte: filters.yearFrom, $lte: filters.yearTo };
+    }
+
+   
