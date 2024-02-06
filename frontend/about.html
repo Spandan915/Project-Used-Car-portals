@@ -3,17 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us</title>
+    <title>Used Car Portal</title>
     <link rel="stylesheet" href="styles.css">
+    <script>
+        // Function to display contact information
+        function displayContactInfo() {
+            alert("Contact us at:\nPhone: +91 9674408920\nEmail: virat.kohli@gmail.com\nLocation: Samaria street, Melbourne City, Victoria State, 3029");
+        }
+
+        // Function for search functionality
+        function searchCars() {
+            // Retrieve the search query from the user
+            var searchQuery = prompt("Enter the make, model, or any keyword to search for a car:");
+
+            // Perform the search (dummy functionality for illustration)
+            alert("Searching for: " + searchQuery);
+            // Additional logic to fetch and display search results can be added here
+        }
+    </script>
 </head>
 <body>
     <header>
-        <h1>About Us</h1>
+        <h1>Used Car Portal</h1>
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="#" onclick="displayContactInfo()">Contact</a></li>
+                <li><a href="#" onclick="searchCars()">Search</a></li> <!-- Added search functionality -->
             </ul>
         </nav>
     </header>
@@ -39,9 +56,9 @@
             <h2>Contact Us</h2>
             <p>Have questions or feedback? We'd love to hear from you! Feel free to reach out to us at:</p>
             <ul>
-                <li>Phone: +61 452147617</li>
-                <li>Email: shaikmohdsiddique@gmail.com</li>
-                <li>Location: Samaria street, Melbourne City,Victoria State,3029]</li>
+                <li>Phone: +91 9674408920</li>
+                <li>Email: virat.kholi@gmail.com</li>
+                <li>Location: Samaria street, Melbourne City, Victoria State, 3029</li>
             </ul>
         </section>
     </main>

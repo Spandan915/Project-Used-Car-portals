@@ -1,27 +1,58 @@
 <section>
-    <h2>Review Car Details</h2>
-    <p>As a potential buyer, scrutinize detailed information about a specific used car to make an informed decision.</p>
-    
-    <div>
-      <h3>Select Car</h3>
-      <!-- Display a list of cars with the option to click on a specific car for details -->
-      <ul>
-        <li><a href="#" onclick="viewCarDetails(1)">Car 1 - Toyota Camry</a></li>
-        <li><a href="#" onclick="viewCarDetails(2)">Car 2 - Honda Accord</a></li>
-        <!-- Add more cars as needed -->
-      </ul>
-    </div>
+  <h2>Review Car Details</h2>
+  <p>As a potential buyer, scrutinize detailed information about a specific used car to make an informed decision.</p>
   
-    <div id="carDetails">
-      <!-- Car details will be dynamically loaded here -->
-    </div>
-  </section>
-  
-  <script>
-    function viewCarDetails(carId) {
-      // Placeholder function to load car details
-      alert(`Loading details for Car ${carId}`);
-      // Implement logic to fetch and display detailed information about the selected car
-    }
-  </script>
-  
+  <div>
+    <h3>Select Car</h3>
+    <!-- Display a list of cars with the option to click on a specific car for details -->
+    <ul id="carList">
+      <!-- List items will be dynamically loaded here -->
+    </ul>
+  </div>
+
+  <div id="carDetails">
+    <!-- Car details will be dynamically loaded here -->
+  </div>
+</section>
+
+<script>
+  // Placeholder for sample data, replace with actual data fetching logic
+  const availableCars = [
+    { id: 1, make: 'BMw', model: 'X', year: 2018, price: 15000, mileage: 50000 },
+    { id: 2, make: 'Toyota', model: 'Mustang', year: 2019, price: 18000, mileage: 45000 }
+    // Add more cars as needed
+  ];
+
+  function displayCars() {
+    const carListContainer = document.getElementById('carList');
+    // Clear existing content
+    carListContainer.innerHTML = '';
+
+    // Display the list of available cars
+    availableCars.forEach(car => {
+      const li = document.createElement('li');
+      li.innerHTML = `<a href="#" onclick="viewCarDetails(${car.id})">Car ${car.id} - ${car.make} ${car.model}</a>`;
+      carListContainer.appendChild(li);
+    });
+  }
+
+  function viewCarDetails(carId) {
+    // Placeholder function to load car details
+    alert(`Loading details for Car ${carId}`);
+    // Implement logic to fetch and display detailed information about the selected car
+    const carDetailsContainer = document.getElementById('carDetails');
+    const selectedCar = availableCars.find(car => car.id === carId);
+
+    // Replace the next lines with actual content rendering logic
+    carDetailsContainer.innerHTML = `
+      <h3>${selectedCar.make} ${selectedCar.model}</h3>
+      <p>Year: ${selectedCar.year}</p>
+      <p>Price: $${selectedCar.price}</p>
+      <p>Mileage: ${selectedCar.mileage} miles</p>
+      <!-- Add more details as needed -->
+    `;
+  }
+
+  // Initial display of available cars
+  displayCars();
+</script>
