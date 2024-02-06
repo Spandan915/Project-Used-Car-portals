@@ -1,9 +1,8 @@
-// backend/backend-app.js
-
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const path = require('path'); // Import the path module
 const { Car, User } = require('./models');
 const routes = require('./routes');
 
@@ -13,32 +12,33 @@ const PORT = process.env.PORT || 3000;
 // Middleware
 app.use(bodyParser.json());
 app.use(cors());
+
 // Serve static files from the 'frontend' directory
-app.use(express.static('frontend'));
+app.use(express.static(path.join(__dirname, '../frontend')));
 
 // MongoDB connection
-//mongoose.connect('mongodb://localhost:27017/carplatform', { useNewUrlParser: true, useUnifiedTopology: true });
-// MongoDB connection without deprecated options
-// MongoDB connection without deprecated options
-mongoose.connect('mongodb://localhost:27017/carplatform', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  // Remove the useFindAndModify option
-})
-  .then(() => {
+const connectDB = async () => {
+  try {
+    await mongoose.connect('mongodb://localhost:27017/carplatform', {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      // Remove the useFindAndModify option
+    });
     console.log('MongoDB connected successfully');
-  })
-  .catch((error) => {
+  } catch (error) {
     console.error('MongoDB connection error:', error);
-  });
-
+    process.exit(1);
+  }
+};
+connectDB();
 
 // Use routes
 app.use('/api', routes);
 
 // Define a simple route for the root path
 app.get('/', (req, res) => {
-  res.send('Hello, this is the root path!');
+  // Send the index.html file located in the frontend directory
+  res.sendFile(path.join(__dirname, '../frontend', 'index.html'));
 });
 
 // Start server
